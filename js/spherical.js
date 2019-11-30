@@ -5,15 +5,9 @@ var SphericalHarmonics = function (values) {
 };
 
 SphericalHarmonics.prototype = {
-    // toxiclibs - FIXME check where flipped vertex order is coming from sometimes
     computeVertexFor: function (p, phi, theta) {
         var r = 0;
-        /*r += Math.pow(Math.sin(this.values.vector[0] * theta), this.values.vector[1]);
-        r += Math.pow(Math.cos(this.values.vector[2] * theta), this.values.vector[3]);
-        r += Math.pow(Math.sin(this.values.vector[4] * phi), this.values.vector[5]);
-        r += Math.pow(Math.cos(this.values.vector[6] * phi), this.values.vector[7]);*/
         r = Math.abs(normalize(this.values.l, this.values.m) * LegendreP(this.values.l, this.values.m, Math.cos(theta)) * Math.cos(this.values.m * phi))
-
 
         var sinTheta = Math.sin(theta);
         p.x = r * sinTheta * Math.cos(phi);
@@ -65,7 +59,7 @@ function LegendreP(l, m, x) {
             case 1:
                 return -sqrt_1_x2;
             default:
-                {/*Do nothing*/ }
+                { }
         }
     }
 

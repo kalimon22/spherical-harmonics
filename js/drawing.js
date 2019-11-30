@@ -58,7 +58,6 @@ options = {
         builder = new toxi.geom.mesh.SurfaceMeshBuilder(sh);
         toxiMesh = builder.createMesh(new toxi.geom.mesh.TriangleMesh(), res, 1, true);
         threeGeometry = toxi.THREE.ToxiclibsSupport.createMeshGeometry(toxiMesh);
-        console.log(threeGeometry);
         threeMesh = new THREE.Mesh(threeGeometry, material);
         threeMesh.scale.set(options.zoom, options.zoom, options.zoom);
         scene.add(threeMesh);
