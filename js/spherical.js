@@ -1,14 +1,39 @@
 
 var SphericalHarmonics = function (values) {
     this.values = values;
-    console.log(LegendreP(2, 1, .5))
 };
 
 SphericalHarmonics.prototype = {
     computeVertexFor: function (p, phi, theta) {
-        var r = 0;
-        r = Math.abs(normalize(this.values.l, this.values.m) * LegendreP(this.values.l, this.values.m, Math.cos(theta)) * Math.cos(this.values.m * phi))
-
+        var real = 0
+        var imag = 0
+        var r = 0
+        if (this.values.ri == "modulo" || this.values.ri == "real")
+            var real = normalize(this.values.l, this.values.m) * LegendreP(this.values.l, this.values.m, Math.cos(theta)) * Math.cos(this.values.m * phi)
+        if (this.values.ri == "modulo" || this.values.ri == "imaginaria")
+            var imag = normalize(this.values.l, this.values.m) * LegendreP(this.values.l, this.values.m, Math.cos(theta)) * Math.sin(this.values.m * phi)
+        if (this.values.ri == "modulo") {
+            r = Math.sqrt(real * real + imag * imag)
+        } else {
+            if (this.values.ri == "real")
+                r = real
+            else if (this.values.ri == "imaginaria")
+                r = imag
+            if (this.values.positivo && this.values.negativo)
+                r = Math.abs(r)
+            else {
+                if (this.values.positivo && r < 0)
+                    r = 0
+                if (this.values.negativo) {
+                    if (r > 0)
+                        r = 0
+                    else
+                        r *= -1
+                }
+                if (!this.values.negativo && !this.values.positivo)
+                    r = 0
+            }
+        }
         var sinTheta = Math.sin(theta);
         p.x = r * sinTheta * Math.cos(phi);
         p.y = r * Math.cos(theta);
@@ -89,6 +114,6 @@ function factorial(n) {
     return total;
 }
 function normalize(l, m) {
-    return Math.sqrt(((2 * l + 1) * factorial(l - m)) / factorial(l + m))
+    return Math.sqrt(((l + .5) * factorial(l - m)) / factorial(l + m))
 }
 
