@@ -102,12 +102,13 @@
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                         for="checkbox_positivo">
                                         <input type="checkbox" id="checkbox_positivo" class="mdl-checkbox__input"
-                                            checked >
+                                            checked>
                                         <span class="mdl-checkbox__label">Valores positivos</span>
                                     </label>
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                         for="checkbox_negativo">
-                                        <input type="checkbox" id="checkbox_negativo" class="mdl-checkbox__input" checked>
+                                        <input type="checkbox" id="checkbox_negativo" class="mdl-checkbox__input"
+                                            checked>
                                         <span class="mdl-checkbox__label">Valores negativos</span>
                                     </label>
                                 </div>
@@ -122,28 +123,31 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Uso de la demo</h4>
-                        Esta demostracion del experimento de difracción de Young es de uso especiamente sencillo. La
-                        parte gráfica principal muestra tres elementos:
+                        Esta demostración permite mostar, en un entorno 3D, el aspecto de los harmónicos esféricos, que
+                        representan los autovectores del momento angular en física cuántica. Estos autovectores son de
+                        particular importancia, al formar la componente angular de los orbitales atómicos.
+                        En este caso, la demo que aqui se presenta tiene una serie de controles muy sencillos
                         <ul>
-                            <li>Una barra azul, que representa la localización de las rendijas. En un PC, tanto la
-                                posición de las rendijas como la distancias que las separa puede regularse arrastrando
-                                con el ratón. En dispositivos móviles, esta acción puede realizarse mediante los
-                                controles deslizantes que hay en la parte inferior.</li>
-                            <li>Una pantalla, que representa los impactos fotónicos que son recibidos.</li>
-                            <li>Una representación gráfica de la intensidad en función de la localización de la
-                                pantalla.</li>
+                            <li>Dos selectores, para los valores de <i><b>l</b></i> y <i><b>m</b></i>.</li>
+                            <li>Teniendo en cuenta que los armónicos son funciones complejas, disponemos de un combo que
+                                permite seleccionar la representación de la parte real, imaginaria o el módulo del
+                                armónico.</li>
+                            <li>Un checkbox para limitar (para los casos de representación de valores reales o
+                                imaginarios) la representación únicamente de los valores positivos o negativos.</li>
                         </ul>
-                        En la parte superior, se dispone de un selector del número de rendijas, un switch que permite
-                        tener en cuenta (o no) la difracción, y un botón para limpiar los impactos que se hayan recibido
-                        en la pantalla.
-                        La parte inferor incluye, amén de los deslizadores que controlan la posición de las rendijas,
-                        otro para modificar la longitud de onda utilizado.
-                        También se incluyen tres indicaciones que, de forma dinámica, nos permitirán conocer:
+                        La representación de los armónicos esféricos se realiza tras aplicar una normalización estándar.
+                        Dado que estas funciones solo dependen de las variables angulares <i>(&phi; y &theta;)</i>, es
+                        habitual su representación sobre la esfera unidad, indicando la intensidad mediante códigos de
+                        colores.
+                        Tras experimentar esta solución se ha preferido una representación que se basa en utilizar la
+                        distancia al centro <i>(r)</i>, como indicador del valor de la variable en función de las
+                        coordenadas esféricas.
+                        Sobre la misma imagen, se pueden utilizar algunos controles
                         <ul>
-                            <li>La distancia entre máximos de intensidad en función de los parámetros elegidos. </li>
-                            <li>La coordenada y (en milímetros) de la pantalla sobre la que tenemos colocado el ratón en
-                                cada momento.</li>
-                            <li>La intensidad relativa (con mínimo 0, máximo 1) en dicha poisición de la pantalla.</li>
+                            <li>Un movimiento de ratón (o del dedo en caso de dispositivos móviles) permite cambiar el
+                                angulo de visualización de la función. </li>
+                            <li>El uso de la rueda del ratón (o el gesto de zoom en dispositivos móviles) permite
+                                realizar un zoom sobre la imagen.</li>
                         </ul>
 
                     </div>
@@ -159,26 +163,21 @@
                             <li>La librería de componentes <a href="https://getmdl.io">Material Design Lite</a>, con
                                 licencia libre Apache. La estructura de la página se basa en una de las <a
                                     href="https://getmdl.io/templates/text-only/index.html">plantillas.</a></li>
+                            <li>La librería de representación en tres dimensiones con javascript <a
+                                    href="https://threejs.org/">three.js</a>, con
+                                licencia libre MIT. </li>
+
+                            <li>La librería <a href="https://github.com/hapticdata/toxiclibsjs">toxiclibjs</a>, para
+                                facilitar la representación de una imagen con three.js en coordenadas esféricas. Esta
+                                librería tiene licencia libre LGPL 2.1. </li>
+                            <li>La fuente de Google <a href="https://material.io/resources/icons/?style=baseline">Icons
+                                    para Material Design</a>, con licencia libre Apache 2.0</li>
                         </ul>
                         <h4>Fuentes de inspiración</h4>
-                        Se han tomado diferentes ideas, tanto de emulación como de disposición de los elementos gráficos
-                        de diferentes fuentes de internet, entre las que podemos destacar la página <a
-                            href="https://www.compadre.org/osp/items/detail.cfm?ID=13753">Open Souce
-                            Physics</a> y la página de <a
-                            href=https://iwant2study.org/ospsg/index.php/interactive-resources/physics/06-quantum-physics/119-double-slit-wave-particle-duality-model>Open
-                            Educational Resources / Open Source Physics @ Singapore</a>. También se han tomado algunas
-                            ideas gráficas que han servido de inspiración, de:<ul>
-                            <li>Ideas para la representacion de las ondas <a
-                                    href="https://github.com/spennino/double-slit">https://github.com/spennino/double-slit</a>.
-                            </li>
-                            <li>Disposición física de los elementos gráficos, e ideas para la creación de la
-                                simulación de <a
-                                    href="https://github.com/sunDalik/Interference-simulator">https://github.com/sunDalik/Interference-simulator</a>.
-                            </li>
-                            <li>Base teórica y algunas ecuaciones de la web de <a
-                                    href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/slits.html">hyperphysics</a>.
-                            </li>
-                            </ul>
+                        Una de las principales complejidades para la creación ha venido de la mano del cálculo de los <a
+                            href="https://es.wikipedia.org/wiki/Polinomios_asociados_de_Legendre">Polinomios Asociados
+                            de Legendre</a>. Para su puesta en marcha se ha utilizado la información disponible en <a
+                            href="https://github.com/sylvaus/hyperspharm/wiki/Associated-Legendre-Polynomial">https://github.com/sylvaus/hyperspharm/wiki/Associated-Legendre-Polynomial</a>
                     </div>
                 </section>
             </div>

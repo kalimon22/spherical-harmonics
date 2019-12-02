@@ -114,6 +114,6 @@ function factorial(n) {
     return total;
 }
 function normalize(l, m) {
-    return Math.sqrt(((l + .5) * factorial(l - m)) / factorial(l + m))
+    return Math.sqrt(((2 * l + 1) * factorial(l - m)) / factorial(l + m))
 }
 
